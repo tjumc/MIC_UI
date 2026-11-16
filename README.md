@@ -20,10 +20,12 @@ python3 -m http.server 8000 --directory dist
 
 - 页面结构和中英文案在 `src/build.py` 中；运行 `python3 src/build.py` 重新生成原方案。两套新增方案由 `python3 src/build_variants.py` 生成。
 - 共用样式与交互在 `dist/site.css` 和 `dist/site.js`，新增方案各自的样式与交互位于 `dist/concepts/`。名单、论文、课程数据共用 `dist/data/`。
-- 所有新站图片位置均为空白说明框，不含占位照片。
+- 校标和 MIC 实验室徽章使用 MIC 原官网公开素材；其余图片位置均为空白说明框，不含占位照片。
 - 成员和校友记录整理于 2026 年 11 月；校友去向是历史记录，可能已发生变化。课程为 2011–2021 年历史记录，不代表当前开课安排。
 - 论文列表依据原站公开记录整理，包含原站列出的 232 条记录；正式使用前请课题组复核内容和更新状态。
 
 ## 资料来源
 
 内容依据 [MIC 成员](https://mic.tongji.edu.cn/cy/list.htm)、[校友](https://mic.tongji.edu.cn/xy/list.htm)、[论文](https://mic.tongji.edu.cn/xslw/list.htm)、[课程](https://mic.tongji.edu.cn/kcxx/list.htm)、[联系](https://mic.tongji.edu.cn/lxwm/list.htm)和[教师介绍](https://mic.tongji.edu.cn/js/list.htm)页面，以及用户提供的最新研究方向和教师名单。页面布局参考 [CVLab](https://cvlab.unibo.it/)，没有使用其品牌或图片素材。
+
+校标和实验室徽章来源于 [MIC 官网](https://mic.tongji.edu.cn/main.htm) 正在使用的素材，原图文件位于 `dist/assets/`。

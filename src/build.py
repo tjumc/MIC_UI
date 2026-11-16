@@ -42,6 +42,10 @@ NAV = [('index.html','首页','Home'),('research.html','研究方向','Research'
 def slot(lang, zh, en, cls=''):
     return f'<div class="image-slot {e(cls)}"><strong>{e(t(lang,zh,en))}</strong><small>{e(t(lang,"图片待提供","Image to be provided"))}</small></div>'
 
+def emblems(lang):
+    prefix = '' if lang == 'zh' else '../'
+    return f'<span class="brand-emblems"><img class="emblem" src="{prefix}assets/logo_tongji.png" alt="{e(t(lang,"同济大学校标","Tongji University emblem"))}" width="44" height="44"><img class="emblem" src="{prefix}assets/logo_mic.png" alt="{e(t(lang,"MIC 实验室徽章","MIC laboratory emblem"))}" width="44" height="44"></span>'
+
 def header(lang, page):
     active = 'team.html' if page in ('members.html','alumni.html') else page
     parts=[]
@@ -61,12 +65,12 @@ def header(lang, page):
         mobile.append(f'<a href="{path}"{current}>{e(t(lang,zh,en))}</a>')
         if path=='team.html': mobile.extend([f'<a href="members.html">{e(t(lang,"团队成员","Members"))}</a>',f'<a href="alumni.html">{e(t(lang,"校友","Alumni"))}</a>'])
     mobile.append(f'<a href="{switch}" lang="{"en" if lang=="zh" else "zh-CN"}">{switch_label}</a>')
-    return f'''<header class="site-header"><div class="shell header-row"><a class="brand" href="index.html" aria-label="{e(t(lang,'MIC 首页','MIC home'))}"><span class="brand-mark">MIC<b>.</b></span><span class="brand-text">{e(t(lang,'多媒体与智能计算实验室','Multimedia & Intelligent Computing Lab'))}<small>{e(t(lang,'Multimedia & Intelligent Computing Lab','Tongji University'))}</small></span></a><nav class="desktop-nav" aria-label="{e(t(lang,'主导航','Main navigation'))}">{links}</nav><button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu">{e(t(lang,'菜单','Menu'))} ☰</button></div><nav class="shell mobile-nav" id="mobile-menu" aria-label="{e(t(lang,'手机导航','Mobile navigation'))}" hidden>{''.join(mobile)}</nav></header>'''
+    return f'''<header class="site-header"><div class="shell header-row"><a class="brand" href="index.html" aria-label="{e(t(lang,'MIC 首页','MIC home'))}">{emblems(lang)}<span class="brand-text">{e(t(lang,'多媒体与智能计算实验室','Multimedia & Intelligent Computing Lab'))}<small>{e(t(lang,'Multimedia & Intelligent Computing Lab','Tongji University'))}</small></span></a><nav class="desktop-nav" aria-label="{e(t(lang,'主导航','Main navigation'))}">{links}</nav><button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu">{e(t(lang,'菜单','Menu'))} ☰</button></div><nav class="shell mobile-nav" id="mobile-menu" aria-label="{e(t(lang,'手机导航','Mobile navigation'))}" hidden>{''.join(mobile)}</nav></header>'''
 
 def footer(lang):
     items=[('research.html','研究方向','Research'),('team.html','教师团队','Faculty'),('members.html','成员','Members'),('alumni.html','校友','Alumni'),('publications.html','学术论文','Publications'),('courses.html','课程信息','Courses'),('news.html','动态','News'),('contact.html','联系我们','Contact')]
     links=''.join(f'<a href="{path}">{e(t(lang,zh,en))}</a>' for path,zh,en in items)
-    return f'''<footer class="footer shell"><div><strong>MIC<span>.</span></strong><p>{e(t(lang,'多媒体与智能计算实验室','Multimedia and Intelligent Computing Lab'))}<br>{e(t(lang,'同济大学 · 中国上海','Tongji University · Shanghai, China'))}</p></div><div><h3>{e(t(lang,'探索','EXPLORE'))}</h3><div class="footer-links">{links}</div></div><div><h3>{e(t(lang,'联系','CONTACT'))}</h3><div class="footer-links"><a href="mailto:hanliwang@tongji.edu.cn">hanliwang@tongji.edu.cn</a></div><p>{e(t(lang,'上海市嘉定区曹安公路 4800 号','4800 Cao’an Highway, Jiading, Shanghai'))}</p></div></footer>'''
+    return f'''<footer class="footer shell"><div><div class="footer-brand">{emblems(lang)}<strong>MIC<span>.</span></strong></div><p>{e(t(lang,'多媒体与智能计算实验室','Multimedia and Intelligent Computing Lab'))}<br>{e(t(lang,'同济大学 · 中国上海','Tongji University · Shanghai, China'))}</p></div><div><h3>{e(t(lang,'探索','EXPLORE'))}</h3><div class="footer-links">{links}</div></div><div><h3>{e(t(lang,'联系','CONTACT'))}</h3><div class="footer-links"><a href="mailto:hanliwang@tongji.edu.cn">hanliwang@tongji.edu.cn</a></div><p>{e(t(lang,'上海市嘉定区曹安公路 4800 号','4800 Cao’an Highway, Jiading, Shanghai'))}</p></div></footer>'''
 
 def section_head(lang, eyebrow, zh, en, sub_zh='', sub_en='', link='', link_zh='', link_en=''):
     sub=f'<p>{e(t(lang,sub_zh,sub_en))}</p>' if sub_zh else ''

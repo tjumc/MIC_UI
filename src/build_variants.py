@@ -45,6 +45,7 @@ def make_document(style):
         html=html.replace(f'href="{old}site.css"',f'href="{shared}site.css"')
         html=html.replace(f'src="{old}site.js"',f'src="{shared}site.js"')
         html=html.replace(f'src="{old}data/',f'src="{shared}data/')
+        html=html.replace(f'src="{old}assets/',f'src="{shared}assets/')
         html=html.replace('</head>',f'<link rel="stylesheet" href="{theme}theme.css"><script defer src="{theme}variant.js"></script></head>')
         html=html.replace('<body data-page=',f'<body class="concept-{style}" data-page=')
         return html
