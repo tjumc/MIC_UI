@@ -1,24 +1,25 @@
-# MIC 官网页面方案
+# MIC 官网设计与前端代码
 
-为同济大学多媒体与智能计算实验室制作的四个独立、响应式前端方案，重点呈现研究方向和教师介绍。它们是设计预览，并非现有官网的已部署版本。
+同济大学多媒体与智能计算实验室的完整静态网站方案，包含首页、研究方向、团队（教师、成员、校友）、学术论文、课程信息、动态和联系我们，并提供中英页面。五个研究方向及杜杉杉、吴秀哲的教师名单依据用户要求；两位老师的职称与简介按要求留空。
 
 ## 本地预览
 
-无需安装依赖，在仓库根目录运行：
+无需安装依赖，打开 `dist/index.html` 即可，也可以在仓库根目录运行：
 
 ```sh
 python3 -m http.server 8000 --directory dist
 ```
 
-浏览器打开 <http://localhost:8000/>。方案 01、02、03、04 分别对应 `a.html`、`b.html`、`c.html`、`d.html`。方案 01 和 03 的研究条目可展开；方案 02 的方向索引可切换；方案 04 的研究主题可通过按钮切换，图片位置为文字说明的空白框。每个方案都提供教师资料来源链接。
+访问 `http://localhost:8000/`。原来四个方案完整保存在 `dist/archive/`，可打开 `dist/archive/index.html` 查看。旧入口 `d.html` 会转到新首页。
 
-方案 01–03 中的教师照片直接引用 MIC 原站的公开图片地址，网络不可用时显示姓名首字母占位。方案 04 的图片均为空白说明框，不依赖外部图片。
+## 维护
 
-## 内容依据与范围
+- 页面结构和中英文案在 `src/build.py` 中；运行 `python3 src/build.py` 重新生成页面。
+- 样式与交互在 `dist/site.css` 和 `dist/site.js`，名单、论文、课程数据在 `dist/data/`。
+- 所有新站图片位置均为空白说明框，不含占位照片。
+- 成员和校友记录整理于 2026 年 11 月；校友去向是历史记录，可能已发生变化。课程为 2011–2021 年历史记录，不代表当前开课安排。
+- 论文列表依据原站公开记录整理，包含原站列出的 232 条记录；正式使用前请课题组复核内容和更新状态。
 
-- [MIC 主页](https://mic.tongji.edu.cn/main.htm)：四个研究方向名称。
-- [研究方向](https://mic.tongji.edu.cn/yjfx/list.htm)：研究条目及简述。子项的四类分组是为了演示页面结构而整理，并非官网已明确发布的分类。
-- [教师介绍](https://mic.tongji.edu.cn/js/list.htm)：姓名、职称、研究领域和照片。更多资料分别链接至[王瀚漓教师资料](https://mic.tongji.edu.cn/gdxx/list.htm)与[倪张凯个人主页](https://eezkni.github.io/)。
-- 参考 [CVLab 研究页](https://cvlab.unibo.it/research/)、[CVLab 团队页](https://cvlab.unibo.it/team/)、[UT Austin 计算机视觉研究页](https://www.cs.utexas.edu/research/computer-vision)和[伊利诺伊大学视觉与机器人实验室人员页](https://vision.ai.illinois.edu/people/)。
+## 资料来源
 
-方案 04 的五个研究方向和新增教师姓名由用户提供；杜杉杉、吴秀哲的职称与研究简介尚待补充。其余教师介绍依据上述资料整理。资料核对日期：2026-11-16。
+内容依据 [MIC 成员](https://mic.tongji.edu.cn/cy/list.htm)、[校友](https://mic.tongji.edu.cn/xy/list.htm)、[论文](https://mic.tongji.edu.cn/xslw/list.htm)、[课程](https://mic.tongji.edu.cn/kcxx/list.htm)、[联系](https://mic.tongji.edu.cn/lxwm/list.htm)和[教师介绍](https://mic.tongji.edu.cn/js/list.htm)页面，以及用户提供的最新研究方向和教师名单。页面布局参考 [CVLab](https://cvlab.unibo.it/)，没有使用其品牌或图片素材。
