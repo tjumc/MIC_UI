@@ -13,3 +13,6 @@
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.choice-art{transition:none}}
 /* Use a symbol-capable font for navigation arrows. */
 .circle-arrow,.a-area-icon,.button span,.b-tab>b,.b-hero-link b,.b-switch span,.switch-link span,.a-person a span,.b-person>a span,.b-source span{font-family:"DejaVu Sans",sans-serif;font-weight:400}
+
+/* Four-concept selector; original concepts remain unchanged. */
+.chooser .choice-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.art-d{background:#f8f9f8;color:#253447}.mini-d-title{position:absolute;top:26%;left:8%;font-size:clamp(19px,2vw,32px);line-height:1.15;font-weight:750}.mini-d-title b{background:linear-gradient(transparent 66%,#f8d6b8 66%)}.mini-d-slot{position:absolute;right:7%;top:30%;width:42%;height:43%;border:1px dashed #adb9c4;background:white;display:grid;place-items:center;text-align:center;font-size:8px;line-height:1.5;color:#82919c}.mini-d-pills{position:absolute;bottom:9%;left:8%;display:flex;gap:3px}.mini-d-pills i{font-style:normal;font-size:6px;padding:4px 5px;border:1px solid #d5dfe1;border-radius:20px;color:#63798a}@media(max-width:1100px){.chooser .choice-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:760px){.chooser .choice-grid{grid-template-columns:1fr}}
