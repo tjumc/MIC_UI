@@ -3,7 +3,7 @@
 from html import escape
 from pathlib import Path
 from urllib.parse import urlsplit
-import importlib.util, json, posixpath, shutil, sys
+import importlib.util, json, posixpath, re, shutil, sys
 sys.dont_write_bytecode=True
 
 ROOT=Path(__file__).resolve().parents[2]
@@ -11,6 +11,8 @@ HERE=Path(__file__).resolve().parent
 OUT=ROOT/'dist/mic-v1'
 DATA=json.loads((HERE/'data/content.json').read_text(encoding='utf-8'))
 MANIFEST=json.loads((HERE/'data/source-manifest.json').read_text(encoding='utf-8'))
+IMAGE_MANIFEST=json.loads((HERE/'data/image-assets.json').read_text(encoding='utf-8'))
+IMAGE_BY_URL={item['source']:item for item in IMAGE_MANIFEST['assets'] if item['status']=='ok'}
 spec=importlib.util.spec_from_file_location('mic_original_design',ROOT/'src/build.py')
 base=importlib.util.module_from_spec(spec);spec.loader.exec_module(base)
 e=lambda value:escape(str(value),quote=True)
@@ -24,6 +26,12 @@ EN_NOTICES={
 
 def slot(lang,zh,en,cls=''):
     return base.slot(lang,zh,en,cls)
+
+def image_slot(lang,source,alt_zh,alt_en,blank_zh,blank_en,cls=''):
+    asset=IMAGE_BY_URL.get(source)
+    if asset is None:return slot(lang,blank_zh,blank_en,cls)
+    prefix='' if lang=='zh' else '../'
+    return f'<div class="image-slot has-image {e(cls)}"><img loading="lazy" src="{prefix}assets/legacy/{e(asset["file"])}" alt="{e(t(lang,alt_zh,alt_en))}"></div>'
 
 def section_head(lang,eyebrow,zh,en,sub_zh='',sub_en='',link='',link_zh='',link_en=''):
     return base.section_head(lang,eyebrow,zh,en,sub_zh,sub_en,link,link_zh,link_en)
@@ -51,7 +59,7 @@ def topic_carousel(lang):
     buttons=''.join(f'<button type="button" data-topic="{i}" aria-pressed="{"true" if i==0 else "false"}">{e(t(lang,zh,en))}</button>' for i,(_,zh,en) in enumerate(DIRECTIONS))
     slides=[]
     for i,(key,zh,en) in enumerate(DIRECTIONS):
-        slides.append(f'''<article class="topic-slide" data-slide="{i}"{' hidden' if i else ''}>{slot(lang,'此处放置'+zh+'研究示意图','Place an image for '+en+' here')}<div class="topic-copy"><p class="index-line">{e(en)}</p><h3>{e(t(lang,zh,en))}</h3><p>{e(topic_description(lang,i))}</p><a class="text-link" href="research.html#{key}">{e(t(lang,'了解这个方向','Explore this area'))}</a></div></article>''')
+        slides.append(f'''<article class="topic-slide" data-slide="{i}"{' hidden' if i else ''}>{image_slot(lang,DATA['research_legacy']['zh'][0]['image_url'] if i==0 else None,zh+'研究示意图',en+' research illustration','此处放置'+zh+'研究示意图','Place an image for '+en+' here','research-image')}<div class="topic-copy"><p class="index-line">{e(en)}</p><h3>{e(t(lang,zh,en))}</h3><p>{e(topic_description(lang,i))}</p><a class="text-link" href="research.html#{key}">{e(t(lang,'了解这个方向','Explore this area'))}</a></div></article>''')
     return f'''<div data-carousel><div class="topic-pills" aria-label="{e(t(lang,'选择研究方向','Choose a research area'))}">{buttons}</div><div>{''.join(slides)}</div><div class="carousel-bottom"><p>{e(t(lang,'探索 MIC 的五个研究方向。','Explore five research areas at MIC.'))}</p><div class="carousel-controls"><span data-count>01 / 05</span><button type="button" data-previous aria-label="{e(t(lang,'上一个研究方向','Previous research area'))}">←</button><button type="button" data-next aria-label="{e(t(lang,'下一个研究方向','Next research area'))}">→</button></div><span class="sr-only" data-status aria-live="polite"></span></div></div>'''
 
 def faculty_cards(lang,directory=False):
@@ -66,7 +74,7 @@ def faculty_cards(lang,directory=False):
             excerpt=text if len(text)<=limit else text[:limit].rsplit(' ',1)[0]+'…' if lang=='en' else text[:limit]+'…'
         else:excerpt=''
         extra=f'<a class="text-link" href="{path}">{e(t(lang,"查看简介","Full profile"))}</a>' if path else ''
-        cards.append(f'''<article class="person-card">{slot(lang,'此处放置'+name+'老师照片','Place a portrait of '+(en or name)+' here')}<div><h3>{e(display)}{f'<small>{e(other)}</small>' if other else ''}</h3>{f'<p class="bio">{e(excerpt)}</p>' if excerpt else ''}{extra}</div></article>''')
+        cards.append(f'''<article class="person-card">{image_slot(lang,DATA['faculty']['zh'][idx]['image_url'] if idx is not None else None,name+'老师照片','Portrait of '+(en or name),'此处放置'+name+'老师照片','Place a portrait of '+(en or name)+' here','faculty-image')}<div><h3>{e(display)}{f'<small>{e(other)}</small>' if other else ''}</h3>{f'<p class="bio">{e(excerpt)}</p>' if excerpt else ''}{extra}</div></article>''')
     return ''.join(cards)
 
 def paper_links(lang,paper):
@@ -101,15 +109,16 @@ def research_page(lang):
     pills='<div class="topic-pills">'+''.join(f'<a href="#{key}">{e(t(lang,zh,en))}</a>' for key,zh,en in DIRECTIONS)+'</div>'
     cards=[]
     for i,(key,zh,en) in enumerate(DIRECTIONS):
-        cards.append(f'''<article class="research-row" id="{key}">{slot(lang,'此处放置'+zh+'研究示意图','Place an image for '+en+' here')}<div class="body-copy"><p class="index-line">{e(en)}</p><h2>{e(t(lang,zh,en))}</h2><p>{e(topic_description(lang,i))}</p></div></article>''')
+        cards.append(f'''<article class="research-row" id="{key}">{image_slot(lang,DATA['research_legacy']['zh'][0]['image_url'] if i==0 else None,zh+'研究示意图',en+' research illustration','此处放置'+zh+'研究示意图','Place an image for '+en+' here','research-image')}<div class="body-copy"><p class="index-line">{e(en)}</p><h2>{e(t(lang,zh,en))}</h2><p>{e(topic_description(lang,i))}</p></div></article>''')
     extra=f'''<div class="archive-callout"><div><h2>{e(t(lang,'原站研究专题','Research topics from the original site'))}</h2><p>{e(t(lang,'保留原站的专题介绍，供查阅。','Explore the research descriptions preserved from the original site.'))}</p></div><a class="button secondary" href="research-archive.html">{e(t(lang,'查看历史专题','View historical topics'))}</a></div>'''
     return heading+f'<section class="section shell">{pills}<div class="research-list">{"".join(cards)}</div>{extra}</section>'+base.closing(lang)
 
 def research_archive(lang):
     top=hero(lang,'RESEARCH ARCHIVE','原站研究专题','Research topics from the original site','以下内容来自原站，方向归属和最新状态待课题组确认。','Descriptions are preserved from the original site; current status and classification need confirmation.')
     cards=[]
-    for topic in DATA['research_legacy'][lang]:
-        cards.append(f'''<article class="research-row" id="{e(topic['id'])}">{slot(lang,'此处放置'+topic['title']+'原站示意图','Place the original '+topic['title']+' illustration here')}<div class="body-copy"><h2>{e(topic['title'])}</h2><p>{e(topic['description'])}</p></div></article>''')
+    for index,topic in enumerate(DATA['research_legacy'][lang]):
+        zh_title=DATA['research_legacy']['zh'][index]['title']; en_title=DATA['research_legacy']['en'][index]['title']
+        cards.append(f'''<article class="research-row" id="{e(topic['id'])}">{image_slot(lang,topic['image_url'],zh_title+'原站示意图',en_title+' illustration from the original site','此处放置'+zh_title+'原站示意图','Place the original '+en_title+' illustration here','research-image')}<div class="body-copy"><h2>{e(topic['title'])}</h2><p>{e(topic['description'])}</p></div></article>''')
     return top+f'<section class="section shell"><p class="notice">{e(t(lang,"以下为原站资料快照，尚未将历史专题强行归入新的五个方向。","This is an archival snapshot; topics have not been assigned to the five current areas without confirmation."))}</p><div class="research-list">{"".join(cards)}</div></section>'+base.closing(lang)
 
 def team_page(lang):
@@ -120,7 +129,7 @@ def faculty_detail(lang,who):
     idx=0 if who=='wang' else 1;name=t(lang,'王瀚漓','Hanli Wang') if idx==0 else t(lang,'倪张凯','Zhangkai Ni')
     entry=DATA['faculty'][lang][idx]
     top=hero(lang,'FACULTY',name,name,'教师介绍','Faculty profile')
-    text=f'''<section class="section shell"><a class="text-link" href="team.html">{e(t(lang,'返回团队','Back to team'))}</a><p class="notice">{e(t(lang,'以下为原站资料快照；现任职务、成果数量与联系方式等请课题组复核。','The following is an original-site snapshot. Current roles, counts and contact details need review by the lab.'))}</p><div class="profile-intro">{slot(lang,'此处放置'+('王瀚漓' if idx==0 else '倪张凯')+'老师照片','Place a faculty portrait here')}<div class="body-copy"><p>{e(entry['bio'])}</p></div></div>'''
+    text=f'''<section class="section shell"><a class="text-link" href="team.html">{e(t(lang,'返回团队','Back to team'))}</a><p class="notice">{e(t(lang,'以下为原站资料快照；现任职务、成果数量与联系方式等请课题组复核。','The following is an original-site snapshot. Current roles, counts and contact details need review by the lab.'))}</p><div class="profile-intro">{image_slot(lang,DATA['faculty']['zh'][idx]['image_url'],('王瀚漓' if idx==0 else '倪张凯')+'老师照片','Portrait of '+('Hanli Wang' if idx==0 else 'Zhangkai Ni'),'此处放置'+('王瀚漓' if idx==0 else '倪张凯')+'老师照片','Place a faculty portrait here','faculty-image')}<div class="body-copy"><p>{e(entry['bio'])}</p></div></div>'''
     if idx==0:
         for section in DATA['wang_profile'][lang]:
             if section['id']=='about':continue
@@ -173,10 +182,28 @@ def contact_page(lang):
         fields.append(f'<dt>{e(t(lang,zh,en))}</dt><dd>{value}</dd>')
     return top+f'''<section class="section shell"><div class="contact-grid"><div class="contact-card"><h2>{e(t(lang,'联系信息','Contact information'))}</h2><dl>{''.join(fields)}</dl></div>{slot(lang,'此处放置同济大学嘉定校区位置或地图','Place a map of Tongji University Jiading Campus here','map-slot')}</div></section>'''
 
+def project_body(lang,project):
+    body=project['body_'+lang]
+    figures=IMAGE_MANIFEST['projects'].get(project['id'],[])
+    if not figures:return body
+    matches=list(re.finditer(r'<span class="legacy-image-slot">.*?</span>',body))
+    if len(matches)!=len(figures):raise ValueError('Project image count mismatch: '+project['id'])
+    index=0
+    def insert(match):
+        nonlocal index
+        item=figures[index];index+=1
+        asset=IMAGE_BY_URL.get(item['source']) if item['eligible'] else None
+        if asset is None:return match.group(0)
+        pre='' if lang=='zh' else '../'
+        title=project['title']
+        alt=t(lang,title+' 的原站研究插图 '+str(index),'Original research illustration '+str(index)+' for '+title)
+        return f'<span class="legacy-figure"><img loading="lazy" src="{pre}assets/legacy/{e(asset["file"])}" alt="{e(alt)}"></span>'
+    return re.sub(r'<span class="legacy-image-slot">.*?</span>',insert,body)
+
 def project_page(lang,project):
     title=project['title'];top=hero(lang,'PUBLICATION PROJECT',title,title,'原站项目资料','Project materials from the original site')
     notice=t(lang,'以下正文保留原站发布的英文资料。原站附件链接及插图状态请在迁移前复核。','The original English project description is retained below. Verify legacy downloads and illustrations before migration.')
-    return top+f'''<section class="section shell"><a class="text-link" href="publications.html">{e(t(lang,'返回论文列表','Back to publications'))}</a><p class="notice">{e(notice)}</p><article class="legacy-article project-article">{project['body_'+lang]}</article></section>'''+base.closing(lang)
+    return top+f'''<section class="section shell"><a class="text-link" href="publications.html">{e(t(lang,'返回论文列表','Back to publications'))}</a><p class="notice">{e(notice)}</p><article class="legacy-article project-article">{project_body(lang,project)}</article></section>'''+base.closing(lang)
 
 def build_language(lang):
     pages={
@@ -214,6 +241,7 @@ def main():
     (OUT/'site.css').write_text((ROOT/'dist/site.css').read_text(encoding='utf-8')+'\n'+(HERE/'migration.css').read_text(encoding='utf-8'),encoding='utf-8')
     shutil.copy2(HERE/'site.js',OUT/'site.js')
     shutil.copytree(ROOT/'dist/assets',OUT/'assets',dirs_exist_ok=True)
+    shutil.copytree(HERE/'assets/legacy',OUT/'assets/legacy',dirs_exist_ok=True)
     build_language('zh');build_language('en');write_legacy_redirects()
 
 if __name__=='__main__':main()

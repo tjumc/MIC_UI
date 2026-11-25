@@ -3,12 +3,14 @@
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote,urlsplit
-import json, re, unittest
+import hashlib, json, re, unittest
 
 HERE=Path(__file__).resolve().parent
 ROOT=HERE.parents[1]/'dist/mic-v1'
 DATA=json.loads((HERE/'data/content.json').read_text(encoding='utf-8'))
 MANIFEST=json.loads((HERE/'data/source-manifest.json').read_text(encoding='utf-8'))
+IMAGES=json.loads((HERE/'data/image-assets.json').read_text(encoding='utf-8'))
+ASSETS={x['source']:x for x in IMAGES['assets'] if x['status']=='ok'}
 
 class Page(HTMLParser):
     def __init__(self):
@@ -76,7 +78,43 @@ class MigrationTests(unittest.TestCase):
         self.assertGreaterEqual(len(MANIFEST['image_references']),250)
         for path in ROOT.rglob('*.html'):
             for src,alt in parse(path).img:
-                self.assertTrue(src.endswith(('logo_tongji.png','logo_mic.png')),f'{path}: {src}')
+                self.assertTrue(src and not urlsplit(src).scheme,f'{path}: nonlocal image {src}')
                 self.assertTrue(alt,f'{path}: image without alt')
+                self.assertTrue((path.parent/src).resolve().is_file(),f'{path}: missing image {src}')
+        for source,item in ASSETS.items():
+            image=ROOT/'assets/legacy'/item['file']
+            self.assertTrue(image.is_file(),source)
+            self.assertEqual(hashlib.sha256(image.read_bytes()).hexdigest(),item['sha256'],source)
+
+    def test_known_portraits_and_research_images(self):
+        for lang,prefix in [('zh',''),('en','en/')]:
+            team=(ROOT/prefix/'team.html').read_text(encoding='utf-8')
+            for i,name in [(0,'王瀚漓'),(1,'倪张凯')]:
+                asset=ASSETS[DATA['faculty']['zh'][i]['image_url']]
+                self.assertIn(asset['file'],team,name)
+                detail=(ROOT/prefix/('faculty-'+('wang' if i==0 else 'ni')+'.html')).read_text(encoding='utf-8')
+                self.assertIn(asset['file'],detail,name)
+            for name in ['杜杉杉','吴秀哲']:
+                self.assertIn(name,team)
+            self.assertIn('Place a portrait of 杜杉杉 here' if lang=='en' else '此处放置杜杉杉老师照片',team)
+            archive=(ROOT/prefix/'research-archive.html').read_text(encoding='utf-8')
+            for topic in DATA['research_legacy'][lang]:
+                if topic['image_url'] in ASSETS:self.assertIn(ASSETS[topic['image_url']]['file'],archive)
+            research=(ROOT/prefix/'research.html').read_text(encoding='utf-8')
+            coding=ASSETS[DATA['research_legacy']['zh'][0]['image_url']]['file']
+            self.assertIn(coding,research)
+            self.assertEqual(research.count('class="image-slot has-image research-image"'),1)
+            self.assertIn('object-fit:contain',(ROOT/'site.css').read_text(encoding='utf-8'))
+
+    def test_project_figures_follow_original_page_order(self):
+        for project in DATA['projects']:
+            figures=IMAGES['projects'].get(project['id'],[])
+            for lang,prefix in [('zh',''),('en','en/')]:
+                page=(ROOT/prefix/('project-'+project['id']+'.html')).read_text(encoding='utf-8')
+                inserted=re.findall(r'<span class="legacy-figure"><img [^>]*src="([^"]+)"',page)
+                expected=[ASSETS[x['source']]['file'] for x in figures if x['eligible'] and x['source'] in ASSETS]
+                self.assertEqual([x.rsplit('/',1)[-1] for x in inserted],expected,project['id'])
+                total=project['body_'+lang].count('legacy-image-slot')
+                self.assertEqual(len(inserted)+page.count('legacy-image-slot'),total,project['id'])
 
 if __name__=='__main__':unittest.main(verbosity=2)
