@@ -1,0 +1,482 @@
+{
+  "attachments": [
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/06/05/d132d24942c3a2e0b7333007b0b5/5fa2cc1b-b3c1-432e-a815-9fe85aa61188.zip",
+      "label": "GPVL1.0.zip",
+      "projects": [
+        "345440"
+      ],
+      "status": 206,
+      "bytes": 2144566,
+      "content_type": "application/zip"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/0f/e3/4c42c108475e93d32fbcbd0f9b3f/dbb6e5e9-9daa-4a18-a193-c2a5ee13360d.zip",
+      "label": "PCLE1.0.zip",
+      "projects": [
+        "368243"
+      ],
+      "status": 206,
+      "bytes": 138312,
+      "content_type": "application/zip"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/26/f6/9edc76bf4b6ca5bbf289d8935b17/a563bb0c-a86a-4a67-b5d2-1f5456321877.zip",
+      "label": "SaGAN1.0.zip",
+      "projects": [
+        "308761"
+      ],
+      "status": 206,
+      "bytes": 3367266,
+      "content_type": "application/zip"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/2b/5a/76baa91147c4879d63f5290f8f8d/9a0550b7-1849-48e4-b07f-f6ad068affe6.zip",
+      "label": "CaptionNet1.0.zip",
+      "projects": [
+        "147356"
+      ],
+      "status": 206,
+      "bytes": 28088,
+      "content_type": "application/zip"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/2f/66/6adeaca94241851d4e1899bdefcc/7eb65c7b-6179-4911-a8a2-2d933de30ba6.zip",
+      "label": "ML-iFSODv1.0.zip",
+      "projects": [
+        "190165"
+      ],
+      "status": 206,
+      "bytes": 1086966,
+      "content_type": "application/zip"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/3b/73/2c6fd0354c28b8d0d3d7ca9e63b7/6c8051e0-b95f-4881-b6a0-5faa5ef646a1.zip",
+      "label": "CoVS1.0.zip",
+      "projects": [
+        "270309"
+      ],
+      "status": 206,
+      "bytes": 40589,
+      "content_type": "application/zip"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/41/ad/21cc54b84aa687a88bb9c6a769b3/57fe0f63-7045-4a91-bb4d-79c9446e503f.zip",
+      "label": "MML_V1.0.zip",
+      "projects": [
+        "112315"
+      ],
+      "status": 206,
+      "bytes": 24995056,
+      "content_type": "application/zip"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/42/be/5eb843e14f179cc0b087ffc9a910/a76a3cb5-178c-43d7-b2a4-2567f6cd6df1.zip",
+      "label": "SSCT1.0.zip",
+      "projects": [
+        "347916"
+      ],
+      "status": 206,
+      "bytes": 79565,
+      "content_type": "application/zip"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/46/90/d0449c124d9cb47d9f3b3d7dbe4f/b1c7abca-1c0d-423c-b03b-981c402f4ebf.zip",
+      "label": "KAGS1.0.zip",
+      "projects": [
+        "288078"
+      ],
+      "status": 206,
+      "bytes": 2402985,
+      "content_type": "application/zip"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/4c/58/6173d8374dd6bd5bb963c27e5a97/56c3b86d-94dd-483d-a715-9f4375fb06cd.zip",
+      "label": "UMFN-V1.0.zip",
+      "projects": [
+        "279850"
+      ],
+      "status": 206,
+      "bytes": 132203,
+      "content_type": "application/zip"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/50/51/87a1228c4b79920f19bd236091c9/3cf047d2-e57c-4de8-a4bf-c0cac2e79f61.zip",
+      "label": "FCLM1.0.zip",
+      "projects": [
+        "367955"
+      ],
+      "status": 206,
+      "bytes": 1738788,
+      "content_type": "application/zip"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/55/26/c293e2f5493aa8301c1763423294/26210316-52e5-4456-85dd-50ec9ac79893.zip",
+      "label": "TDVC2.0.zip",
+      "projects": [
+        "288079"
+      ],
+      "status": 206,
+      "bytes": 871254,
+      "content_type": "application/zip"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/56/bd/7b878936464c92d64017cc0b0b83/92910f30-b2b2-4c53-a193-69d650975db2.zip",
+      "label": "MCBD1.0.zip",
+      "projects": [
+        "327474"
+      ],
+      "status": 206,
+      "bytes": 4539163,
+      "content_type": "application/zip"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/5a/c2/1fb076c64ac5bd377922bc1bb78b/229ec57b-6275-4921-9b56-4e0dd2f8df3f.zip",
+      "label": "MGMapNet1.0.zip",
+      "projects": [
+        "347901"
+      ],
+      "status": 206,
+      "bytes": 938597,
+      "content_type": "application/zip"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/68/47/d9b65c4141788c9ed707f8a828e2/08499b92-f481-4df5-a9d1-22b0c4514a6c.zip",
+      "label": "SRSC1.0.zip",
+      "projects": [
+        "308767"
+      ],
+      "status": 206,
+      "bytes": 784874,
+      "content_type": "application/zip"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/6f/f1/e6d5d12b42c58b5d69b8500910b8/9d0257cb-df6f-4869-a632-5691c25f8496.pdf",
+      "label": "Erratum.pdf",
+      "projects": [],
+      "status": 206,
+      "bytes": 7073,
+      "content_type": "application/pdf"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/72/72/f0c240fc48adaa189d6bfb6e48d3/1fcd2f70-fc13-442b-9fa4-553d913dadb7.zip",
+      "label": "MSGT1.0.zip",
+      "projects": [
+        "301910"
+      ],
+      "status": 206,
+      "bytes": 73462,
+      "content_type": "application/zip"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/75/f2/44befa66499cb500397abc97b611/da14a2b2-07bc-4b11-9ad5-272a23fa47d4.gz",
+      "label": "G-MS2F-1.0.tar.gz",
+      "projects": [
+        "86342"
+      ],
+      "status": 206,
+      "bytes": 22683240,
+      "content_type": "application/x-gzip"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/78/71/7de2edad4fa69649c47f3feb4a0b/401e91e5-c73a-4e9d-9683-b2bdcd2b0549.zip",
+      "label": "MPS.zip",
+      "projects": [
+        "139407"
+      ],
+      "status": 206,
+      "bytes": 5300216,
+      "content_type": "application/zip"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/7b/bb/fd6a30a04079a11d6fced3ec11e1/3250506c-451f-4e07-94f0-e1f482fa003e.zip",
+      "label": "CityVG1.0.zip",
+      "projects": [
+        "380955"
+      ],
+      "status": 206,
+      "bytes": 2835932,
+      "content_type": "application/zip"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/7c/40/e6749b0d42d4b206d1bdc5a98321/24e96591-7f68-4f86-b304-d09535d77e96.zip",
+      "label": "HGDI1.0.zip",
+      "projects": [
+        "333150"
+      ],
+      "status": 206,
+      "bytes": 779560,
+      "content_type": "application/zip"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/7f/73/b1addca843b1beb092636f1aa5ce/696c2d85-e432-4c6b-a58d-8a097cc40f2c.zip",
+      "label": "PWMSE1.0.zip",
+      "projects": [
+        "174912"
+      ],
+      "status": 206,
+      "bytes": 2360991,
+      "content_type": "application/zip"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/8e/00/ae9b4e83460da4b87987ccc46bb3/a5d29912-139f-4860-8d7e-768ec7d6cc43.zip",
+      "label": "DICM1.0.zip",
+      "projects": [
+        "356861"
+      ],
+      "status": 206,
+      "bytes": 1208145,
+      "content_type": "application/zip"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/90/1e/fe4e5db9438f9d87cabdf1a6119b/d5c64620-d7c5-458d-8df6-d6e6eac4b29e.zip",
+      "label": "VLRT1.0.zip",
+      "projects": [
+        "342398"
+      ],
+      "status": 206,
+      "bytes": 1990726,
+      "content_type": "application/zip"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/90/85/6e8d314f4677ad3a2c5b00823c58/0ad6e42f-0fc0-4505-a876-0c1d439dbcdc.pdf",
+      "label": "User-Guide-of-CHCF-1.0.pdf",
+      "projects": [
+        "86352"
+      ],
+      "status": 206,
+      "bytes": 218231,
+      "content_type": "application/pdf"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/90/85/6e8d314f4677ad3a2c5b00823c58/74e275a3-a157-44f9-8fb1-8bde340f570d.gz",
+      "label": "CHCF-1.0.tar.gz",
+      "projects": [
+        "86352"
+      ],
+      "status": 206,
+      "bytes": 13377832,
+      "content_type": "application/x-gzip"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/97/cf/c884813b4dfa85f5b0cc1434b6a4/4ec8b57a-3aed-40f9-a2f3-be01bbaeb81b.zip",
+      "label": "SRVC-LA1.0.zip",
+      "projects": [
+        "348036"
+      ],
+      "status": 206,
+      "bytes": 1054741,
+      "content_type": "application/zip"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/9a/da/836a6c1e4127a7e989f91a6ed90d/83a79106-3885-48d7-8cef-a53386986039.zip",
+      "label": "MKTBC_V1.0.zip",
+      "projects": [
+        "86339"
+      ],
+      "status": 206,
+      "bytes": 27632,
+      "content_type": "application/zip"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/9b/9b/f6b81ad641fe9dbca9d0cb014d28/33b0f7a9-dd1f-4352-9885-0e93352aa2c0.gz",
+      "label": "MS-PC-DCNN-1.0.tar.gz",
+      "projects": [
+        "86343"
+      ],
+      "status": 206,
+      "bytes": 27582967,
+      "content_type": "application/x-gzip"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/9d/35/7b268bf045a892e68c8cdc220a7c/79b5254c-ea99-43fa-88f2-72f9ec28567e.zip",
+      "label": "MEP3P1.0.zip",
+      "projects": [
+        "337641"
+      ],
+      "status": 206,
+      "bytes": 79828,
+      "content_type": "application/zip"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/9e/f9/889567074c56b2fe32fa5736430f/28416ade-92e7-4c29-8fb3-8e6255ee4e18.zip",
+      "label": "EmVidCap1.0.zip",
+      "projects": [
+        "183920"
+      ],
+      "status": 206,
+      "bytes": 14885737,
+      "content_type": "application/zip"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/9e/f9/889567074c56b2fe32fa5736430f/cf5842f2-33a3-47fc-a4c5-2c4b56082d09.pdf",
+      "label": "DatasetAccessAgreement.pdf",
+      "projects": [
+        "183920"
+      ],
+      "status": 206,
+      "bytes": 134658,
+      "content_type": "application/pdf"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/a7/88/c8104739476ea64a27195e0d3aa2/a32de3c7-b7ae-4384-92bb-fead8f8dc0cb.zip",
+      "label": "CF_Caffe.zip",
+      "projects": [
+        "86331"
+      ],
+      "status": 206,
+      "bytes": 64699546,
+      "content_type": "application/zip"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/a8/10/c6db8c7a49e7b470a768aae54e6f/60201976-f01c-41ad-8dbb-a9a2ac70667c.zip",
+      "label": "SSP1.0.zip",
+      "projects": [
+        "367611"
+      ],
+      "status": 206,
+      "bytes": 6131054,
+      "content_type": "application/zip"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/a8/54/5a47c3b5458697e9180dcc980f25/a4e5e579-3846-4f37-8512-ee1eebfa30c6.zip",
+      "label": "MGTR-MISS1.0.zip",
+      "projects": [
+        "356862"
+      ],
+      "status": 206,
+      "bytes": 867419,
+      "content_type": "application/zip"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/ab/8b/3ad96813453cbaf3efd55e5eb09d/4a7222e0-36a1-4da5-a96e-2228abd587ef.zip",
+      "label": "MABAN1.0.zip",
+      "projects": [
+        "189731"
+      ],
+      "status": 206,
+      "bytes": 13654,
+      "content_type": "application/zip"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/b2/09/03ae908745b498228719f30a769f/4b8a4c26-8d69-4055-b973-c0b306a6227b.zip",
+      "label": "IR-VQAv1.0.zip",
+      "projects": [
+        "190093"
+      ],
+      "status": 206,
+      "bytes": 107780,
+      "content_type": "application/zip"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/b2/ad/7b2be26a4d09aab25dc7e4da27bf/69f6166b-2bb3-485c-b405-dd64be58d35f.zip",
+      "label": "StruPyNet_V1.0.zip",
+      "projects": [
+        "145148"
+      ],
+      "status": 206,
+      "bytes": 7735232,
+      "content_type": "application/zip"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/b6/44/cb2cd7e34409b28f5f5590fb782a/07e696c5-3b75-4876-a5dc-4c2b6fc03cfc.zip",
+      "label": "BLJND1.0.zip",
+      "projects": [
+        "148287"
+      ],
+      "status": 206,
+      "bytes": 10361955,
+      "content_type": "application/zip"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/bc/5f/f5dcb8c94532b4d1eb560844cf00/c2d6a7df-9df3-4f88-88a0-2f87b1be590a.zip",
+      "label": "TLPK1.0.zip",
+      "projects": [
+        "303295"
+      ],
+      "status": 206,
+      "bytes": 2536171,
+      "content_type": "application/zip"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/be/54/3cb023314008b0e7bcf24a5a10fc/bfc6e775-d420-4010-a1a4-47c542e4f27b.zip",
+      "label": "AFRN_V1.0.zip",
+      "projects": [
+        "139398"
+      ],
+      "status": 206,
+      "bytes": 169987,
+      "content_type": "application/zip"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/c0/6a/16527fef44d48e26945551b6c8c7/397520f8-8445-4c30-aa82-9bfdec2805f5.zip",
+      "label": "pre-built-binaries.zip",
+      "projects": [
+        "112310"
+      ],
+      "status": 206,
+      "bytes": 11496976,
+      "content_type": "application/zip"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/c8/61/80f8c2df4379829a83697b99dc62/a56f11c7-b1cc-4145-8b9d-5583caaae649.zip",
+      "label": "GAACNN1.0.zip",
+      "projects": [
+        "270307"
+      ],
+      "status": 206,
+      "bytes": 367840,
+      "content_type": "application/zip"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/df/97/ed49535843cea6b41faa3955a054/6246d2c8-4b0c-4a0f-a268-89378b53ab47.zip",
+      "label": "MCRGN1.0.zip",
+      "projects": [
+        "186716"
+      ],
+      "status": 206,
+      "bytes": 12834,
+      "content_type": "application/zip"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/e4/95/c2e4ff7848b69e68840c3a2f4387/7def6525-db78-40bc-831e-9af367084f3e.zip",
+      "label": "MCLOS1.0.zip",
+      "projects": [
+        "332031"
+      ],
+      "status": 206,
+      "bytes": 10943761,
+      "content_type": "application/zip"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/ee/cc/53b14baf4267bd7098e97f8c2092/0376ab6b-a0f2-4591-bed6-c2399383bc64.zip",
+      "label": "TBC_V1.0.zip",
+      "projects": [
+        "86353"
+      ],
+      "status": 206,
+      "bytes": 3154,
+      "content_type": "application/zip"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/f6/41/ec00ada74e8dbac58e258df8f9fe/c95e4686-6c29-453b-82e2-ad5f616cea98.zip",
+      "label": "WaveCL1.0.zip",
+      "projects": [
+        "356864"
+      ],
+      "status": 206,
+      "bytes": 7057768,
+      "content_type": "application/zip"
+    },
+    {
+      "url": "https://mic.tongji.edu.cn/_upload/article/files/f7/51/4676a9354815a347009164b7bf8d/237cec79-2d4c-4f4f-85be-4a798fd7d309.zip",
+      "label": "ATE1.0.zip",
+      "projects": [
+        "307355"
+      ],
+      "status": 206,
+      "bytes": 2266791,
+      "content_type": "application/zip"
+    }
+  ]
+}
